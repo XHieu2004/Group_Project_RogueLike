@@ -5,6 +5,7 @@ public class BulletScript : MonoBehaviour
     GameObject target;
     public float speed;
     Rigidbody2D bulletRB;
+    public int damage;
 
     void Start()
     {
@@ -19,6 +20,20 @@ public class BulletScript : MonoBehaviour
         else
         {
             Debug.LogError("Target not found. Bullet will not move.");
+        }
+    }
+        private void OnTriggerEnter2D(Collider2D collision){
+        // if (collision.CompareTag("Wall")){
+        //     Explode();
+        // }
+        if (collision.CompareTag("Player")){
+            Debug.Log("Bullet hit player!"); 
+            PlayerHealth player= collision.GetComponent<PlayerHealth>();
+            if(player != null)
+            {
+                player.TakeDamage(damage); 
+            }
+
         }
     }
 }
