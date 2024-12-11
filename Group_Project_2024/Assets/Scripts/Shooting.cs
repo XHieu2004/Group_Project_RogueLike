@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public GameObject[] bullets;
     public float shootingCooldown;
     private float cooldownTimer = 0;
+    public AudioSource audioSource; 
 
     void Update()
     {
@@ -21,6 +22,9 @@ public class Shooting : MonoBehaviour
         Vector2 direction = bulletPoint.right;
         bullets[FindBullet()].GetComponent<ProjectTile>().SetDirection(direction); 
         cooldownTimer = 0f;
+        if (audioSource != null){
+            audioSource.Play();
+        }
 
     }
     private int FindBullet()
