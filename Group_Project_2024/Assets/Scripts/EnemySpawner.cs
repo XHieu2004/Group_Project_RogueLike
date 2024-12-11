@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI; 
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,11 +16,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemyCoroutine());
     }
 
-    void Update()
-    {
-        
-    }
-     private IEnumerator SpawnEnemyCoroutine()
+    private IEnumerator SpawnEnemyCoroutine()
     {
         while (true)
         {
@@ -28,19 +24,33 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnEnemy();
             }
-            yield return new WaitForSeconds(spawnInterval); 
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
-    private void SpawnEnemy(){
-        Vector2 spawnPosition = new Vector2(
+
+    private void SpawnEnemy()
+    {
+        Vector3 randomPosition = new Vector3(
             Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+            1f, 
             Random.Range(spawnAreaMin.y, spawnAreaMax.y)
         );
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        currentEnemyCount++;
-    }
-    public void DecreaseEnemyCount(){
-    currentEnemyCount--;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPosition, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            
+            Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+            currentEnemyCount++;
+        }
+        else
+        {
+            Debug.LogWarning("Spawn Error, object not on navmesh surface");
+        }
     }
 
+    public void DecreaseEnemyCount()
+    {
+        currentEnemyCount--;
+    }
 }
