@@ -17492,7 +17492,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_691
+      name: top_left_breakfloor
       rect:
         serializedVersion: 2
         x: 0
@@ -17513,7 +17513,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_692
+      name: top_right_breakfloor
       rect:
         serializedVersion: 2
         x: 16
@@ -18017,7 +18017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_716
+      name: bot_left_breakfloor
       rect:
         serializedVersion: 2
         x: 0
@@ -18038,7 +18038,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_717
+      name: bot_right_breakfloor
       rect:
         serializedVersion: 2
         x: 16
@@ -23130,6 +23130,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      bot_left_breakfloor: 21301432
+      bot_right_breakfloor: 21301434
       floor1: 21301516
       mainlevbuild_0: 21300000
       mainlevbuild_1: 21300002
@@ -23788,8 +23790,6 @@ TextureImporter:
       mainlevbuild_689: 21301378
       mainlevbuild_69: 21300138
       mainlevbuild_690: 21301380
-      mainlevbuild_691: 21301382
-      mainlevbuild_692: 21301384
       mainlevbuild_693: 21301386
       mainlevbuild_694: 21301388
       mainlevbuild_695: 21301390
@@ -23816,8 +23816,6 @@ TextureImporter:
       mainlevbuild_713: 21301426
       mainlevbuild_714: 21301428
       mainlevbuild_715: 21301430
-      mainlevbuild_716: 21301432
-      mainlevbuild_717: 21301434
       mainlevbuild_718: 21301436
       mainlevbuild_719: 21301438
       mainlevbuild_72: 21300144
@@ -24089,6 +24087,8 @@ TextureImporter:
       mainlevbuild_99: 21300198
       placeholder0: 21301890
       placeholder1: 21300454
+      top_left_breakfloor: 21301382
+      top_right_breakfloor: 21301384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
