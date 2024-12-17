@@ -3188,7 +3188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
-  damage: 20
+  damage: 100
 --- !u!95 &1413254960
 Animator:
   serializedVersion: 5
