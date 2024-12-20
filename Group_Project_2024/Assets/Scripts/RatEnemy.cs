@@ -9,7 +9,6 @@ public class RatEnemy : MonoBehaviour
     [SerializeField] private float safeDistance = 10f; // Range for "Run" animation
     [SerializeField] private float stopDistance = 1.5f; // Range for "Attack" animation
     [SerializeField] private float attackCooldown = 2f; // Cooldown between attacks
-    [SerializeField] private float moveSpeed = 3.5f; // Speed for moving forward
 
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
@@ -46,9 +45,9 @@ public class RatEnemy : MonoBehaviour
             Debug.LogError("Animator component missing on this GameObject!");
         }
 
-        // Disable obstacle avoidance for smoother forward movement
+        // Set stopping distance for NavMeshAgent
+        agent.stoppingDistance = stopDistance;
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-        agent.enabled = false; // Disable NavMeshAgent for transform.forward-based movement
     }
 
     private void Update()
@@ -57,29 +56,33 @@ public class RatEnemy : MonoBehaviour
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
+            // Handle movement and animations based on the player's distance
             if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance)
             {
-                // Move towards the player using transform.forward
+                // Player within safeDistance but not stopDistance
                 isPlayerInRange = false;
-                MoveTowardsTarget();
+                agent.SetDestination(target.position);
                 SetAnimationState(run: true, idle: false);
             }
             else if (distanceToTarget <= stopDistance)
             {
-                // Stop moving and attack
+                // Player within attack range
                 isPlayerInRange = true;
+                agent.ResetPath();
                 SetAnimationState(run: false, idle: false);
 
+                // Attack if cooldown has elapsed
                 if (Time.time >= lastAttackTime + attackCooldown)
                 {
-                    PerformForwardAttack();
+                    PerformAttack();
                     lastAttackTime = Time.time;
                 }
             }
             else
             {
-                // Idle when out of range
+                // Player out of range
                 isPlayerInRange = false;
+                agent.ResetPath();
                 SetAnimationState(run: false, idle: true);
             }
 
@@ -88,23 +91,11 @@ public class RatEnemy : MonoBehaviour
         }
     }
 
-    // Move towards the target using transform.forward
-    private void MoveTowardsTarget()
-    {
-        // Rotate towards the target
-        Vector3 directionToTarget = (target.position - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToTarget);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
-
-        // Move forward in the direction of transform.forward
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
-    }
-
-    // Perform a forward attack
-    private void PerformForwardAttack()
+    // Perform the single attack animation
+    private void PerformAttack()
     {
         animator.SetTrigger("Attack");
-        Debug.Log("RatEnemy is performing a forward attack!");
+        Debug.Log("Performing attack: Single Attack");
     }
 
     // Flip the sprite based on the player's position
@@ -112,7 +103,7 @@ public class RatEnemy : MonoBehaviour
     {
         if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = targetX < transform.position.x;
+            spriteRenderer.flipX = targetX <= transform.position.x;
         }
     }
 
@@ -126,8 +117,8 @@ public class RatEnemy : MonoBehaviour
         }
     }
 
-    // Animation event handler for attack
-    public void RatEndAttack()
+    // Animation event handler for attack completion
+    public void EndAttack()
     {
         Debug.Log("Animation event: Attack finished.");
     }

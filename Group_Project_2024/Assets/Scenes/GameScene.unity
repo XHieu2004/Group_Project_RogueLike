@@ -697,7 +697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &362245596
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1855,7 +1855,6 @@ MonoBehaviour:
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
-  moveSpeed: 3.5
 --- !u!1 &718387567
 GameObject:
   m_ObjectHideFlags: 0
