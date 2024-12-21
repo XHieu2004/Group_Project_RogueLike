@@ -18,12 +18,11 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        while (true)
+        while (currentEnemyCount < maxEnemies)
         {
-            if (currentEnemyCount < maxEnemies)
-            {
-                SpawnEnemy();
-            }
+            
+            SpawnEnemy();
+            
             yield return new WaitForSeconds(spawnInterval);
         }
     }
