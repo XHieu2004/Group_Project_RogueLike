@@ -515,7 +515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -534, y: 452}
+  m_AnchoredPosition: {x: -163, y: 358}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272379401
@@ -639,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -538, y: 439}
+  m_AnchoredPosition: {x: -167, y: 345}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343331901
@@ -842,7 +842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -853, y: 477}
+  m_AnchoredPosition: {x: -482, y: 383}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365935558
@@ -2252,6 +2252,7 @@ MonoBehaviour:
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
+  damage: 10
 --- !u!114 &850489291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5278dab0cfd6a54f9a50be86725a09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   anim: {fileID: 850489293}
   disappearTime: 0.5
 --- !u!61 &850489292
@@ -2395,7 +2396,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.46, y: 0.94, z: 0.007019892}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4897,7 +4898,7 @@ GameObject:
   - component: {fileID: 1167987281}
   - component: {fileID: 1167987280}
   - component: {fileID: 1167987286}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,6 +4921,7 @@ MonoBehaviour:
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
+  damage: 10
 --- !u!114 &1167987281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,7 +4966,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.008562803, y: -0.02483211}
@@ -20071,11 +20073,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3876605871206441607, guid: 37039f52f1b9d1b41beb2862140bbd88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.88
+      value: -6.83
       objectReference: {fileID: 0}
     - target: {fileID: 3876605871206441607, guid: 37039f52f1b9d1b41beb2862140bbd88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.76
+      value: 12.54
       objectReference: {fileID: 0}
     - target: {fileID: 3876605871206441607, guid: 37039f52f1b9d1b41beb2862140bbd88, type: 3}
       propertyPath: m_LocalPosition.z

@@ -9,6 +9,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private float safeDistance = 10f; // Range for "Run" animation
     [SerializeField] private float stopDistance = 1.5f; // Range for "Attack" animation
     [SerializeField] private float attackCooldown = 2f; // Cooldown between attacks
+    [SerializeField] private int damage = 10; // Damage dealt to the player
 
     private NavMeshAgent agent;
     private SpriteRenderer spriteRenderer;
@@ -48,7 +49,6 @@ public class MeleeEnemy : MonoBehaviour
         // Set stopping distance for NavMeshAgent
         agent.stoppingDistance = stopDistance;
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-
     }
 
     private void Update()
@@ -98,6 +98,27 @@ public class MeleeEnemy : MonoBehaviour
         int randomAttack = Random.Range(1, 4); // Randomly choose between 1, 2, or 3
         animator.SetTrigger($"Attack {randomAttack}");
         Debug.Log($"Performing attack: Attack_{randomAttack}");
+
+        // Cause damage to the player if within range
+        DealDamageToPlayer();
+    }
+
+    // Deal damage to the player
+    private void DealDamageToPlayer()
+    {
+        if (isPlayerInRange && target != null)
+        {
+            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+                Debug.Log($"Player took {damage} damage from MeleeEnemy.");
+            }
+            else
+            {
+                Debug.LogError("Target does not have a PlayerHealth component!");
+            }
+        }
     }
 
     // Flip the sprite based on the player's position
