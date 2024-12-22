@@ -1661,9 +1661,9 @@ GameObject:
   - component: {fileID: 664768292}
   - component: {fileID: 664768297}
   - component: {fileID: 664768298}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 664768294}
   disappearTime: 0.5
 --- !u!61 &664768293
 BoxCollider2D:
@@ -1712,7 +1712,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0037972182, y: -0.1199924}
@@ -2396,7 +2396,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.46, y: 0.94, z: 0.007019892}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4724,7 +4724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1015823900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 1167987286}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4935,7 +4935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1167987283}
   disappearTime: 0.5
 --- !u!61 &1167987282
 BoxCollider2D:
@@ -20133,7 +20133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6709085352329386018, guid: 37039f52f1b9d1b41beb2862140bbd88, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6725753629371648864, guid: 37039f52f1b9d1b41beb2862140bbd88, type: 3}
       propertyPath: m_IsActive
