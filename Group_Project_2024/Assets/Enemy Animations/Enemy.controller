@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Hurt
+    m_ConditionEvent: Hit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3882601472812253492}
@@ -65,10 +65,10 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8915249690326805237}
-    m_Position: {x: 470, y: 70, z: 0}
+    m_Position: {x: 520, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2883900982659365404}
-    m_Position: {x: 360, y: 130, z: 0}
+    m_Position: {x: 430, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3882601472812253492}
     m_Position: {x: 290, y: 240, z: 0}
@@ -132,7 +132,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Hurt
+  - m_Name: Hit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -209,7 +209,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Hurt
+  m_Name: Enemy_Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

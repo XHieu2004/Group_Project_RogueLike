@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 
 public class PlayerAnimator : MonoBehaviour
 {
     Animator anim;
     PlayerMovement pm;
     SpriteRenderer sr;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,20 +17,28 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        if(pm.moveDir.x !=0 || pm.moveDir.y !=0){
+        // Handle animations based on movement direction
+        if (pm.moveDir.x != 0 || pm.moveDir.y != 0)
+        {
             anim.SetBool("Move", true);
-            SpriteDirectionChecker();
+            UpdateSpriteDirection();
         }
-        else{
-            anim.SetBool("Move",false); 
+        else
+        {
+            anim.SetBool("Move", false);
         }
     }
-    void SpriteDirectionChecker(){
-        if(pm.moveDir.x< 0){
+
+    void UpdateSpriteDirection()
+    {
+        // Flip the sprite based on horizontal movement
+        if (pm.moveDir.x < 0)
+        {
             sr.flipX = true;
         }
-        else{
-            sr.flipX=false;
+        else if (pm.moveDir.x > 0)
+        {
+            sr.flipX = false;
         }
     }
 }
