@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     private Rigidbody2D rb;
     public Vector2 moveDir;
-    public Vector2 lastPosition;
+    public float lastHorizontalVector;
+    public float lastVerticalVector;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        lastPosition = rb.position; // Initialize last position
     }
 
     void Update()
@@ -27,43 +26,44 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
-    void InputManagement()
+    public void InputManagement()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDir = new Vector2(moveX, moveY).normalized;
+
+        if (moveDir.x != 0)
+        {
+            lastHorizontalVector = moveDir.x;
+        }
+
+        if (moveDir.y != 0)
+        {
+            lastVerticalVector = moveDir.y;
+        }
     }
 
-    void Move()
+    public void Move()
     {
-        // Calculate target position based on input
+
         Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+        rb.MovePosition(targetPosition);
+    }
 
-        if (IsPositionWalkable(targetPosition))
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            rb.MovePosition(targetPosition); // Use MovePosition for Rigidbody2D movement
-            lastPosition = targetPosition;  // Update last valid position
-        }
-        else
-        {
-            Debug.Log("Blocked: Not Walkable");
+            Debug.Log("Collided with a Wall");
+            
         }
     }
 
-    bool IsPositionWalkable(Vector2 position)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        // Convert 2D position to 3D for NavMesh sampling
-        Vector3 position3D = new Vector3(position.x, position.y, 0f);
-        NavMeshHit hit;
-
-        // Check if the position is on a walkable NavMesh
-        if (NavMesh.SamplePosition(position3D, out hit, 1.0f, NavMesh.AllAreas))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log($"Walkable: {hit.position}");
-            return hit.mask != 0; // Return true if on a walkable surface
+            Debug.Log("Exited collision with a Wall");
         }
-
-        Debug.Log("Not Walkable");
-        return false;
     }
 }

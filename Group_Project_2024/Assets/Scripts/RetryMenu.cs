@@ -22,5 +22,6 @@ public class RetryMenu : MonoBehaviour
 
     public void ExitGame(){
         Application.Quit();
+        Debug.Log("Exit successed?");
     }
 }
