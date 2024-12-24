@@ -27,13 +27,13 @@ public class ProjectTile : MonoBehaviour
         if (lifetime > 10) gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.CompareTag("Wall")){
+    private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.collider.CompareTag("Wall")){
             Explode();
         }
-        if (collision.CompareTag("Enemy")){
+        if (collision.collider.CompareTag("Enemy")){
             Debug.Log("Bullet hit enemy!"); 
-            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+            EnemyHealth enemy = collision.collider.GetComponent<EnemyHealth>();
             if(enemy != null)
             {
                 enemy.TakeDamage(damage); 
@@ -47,7 +47,7 @@ public class ProjectTile : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Explode"); 
 
-        Invoke("Deactivate", 0.5f);
+        Invoke("Deactivate", 0.1f);
     }
 
     public void SetDirection(Vector2 _direction){
