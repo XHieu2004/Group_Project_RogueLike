@@ -40,6 +40,15 @@ public class ProjectTile : MonoBehaviour
             }
             Explode();
         }
+        if (collision.collider.CompareTag("Enemyroom2")){
+            Debug.Log("Bullet hit enemy!"); 
+            EnemyHealthRoom2 enemy2 = collision.collider.GetComponent<EnemyHealthRoom2>();
+            if(enemy2 != null)
+            {
+                enemy2.TakeDamage(damage); 
+            }
+            Explode();
+        }
     }
     public void Explode(){
         hit = true; 
