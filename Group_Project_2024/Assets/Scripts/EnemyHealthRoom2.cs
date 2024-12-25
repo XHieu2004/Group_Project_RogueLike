@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealthRoom2 : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     private bool isDeath;
     public float disappearTime = 0.5f;
     // private EnemySpawner spawner;
-    public FirstRoomManager roomManager;
+    public RoomManager roomManager;
    
 
 

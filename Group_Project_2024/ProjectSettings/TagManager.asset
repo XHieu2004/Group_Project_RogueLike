@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Wall
   - Road
+  - Enemyroom2
   layers:
   - Default
   - TransparentFX
