@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f67edadd6df4343936086ea9d6540f, type: 3}
+  m_Name: o_blood_bot_right
+  m_EditorClassIdentifier: 
+  upNeighbours:
+  - {fileID: 11400000, guid: 9ac1db302f1ae95468ae34776040c584, type: 2}
+  rightNeighbours:
+  - {fileID: 11400000, guid: b6f74d1aea638c14dab5a14eb52df261, type: 2}
+  downNeighbours:
+  - {fileID: 11400000, guid: b6f74d1aea638c14dab5a14eb52df261, type: 2}
+  leftNeighbours:
+  - {fileID: 11400000, guid: df1e3fef1e212194392ddc9796fc6fb2, type: 2}
+  tileSprite: {fileID: 517557301, guid: a526f8f55485e4f43a04ba6ea2bbaae3, type: 3}
+  isWalkable: 1
