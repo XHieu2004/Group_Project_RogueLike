@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f67edadd6df4343936086ea9d6540f, type: 3}
+  m_Name: u_hori_left
+  m_EditorClassIdentifier: 
+  upNeighbours:
+  - {fileID: 11400000, guid: b6f74d1aea638c14dab5a14eb52df261, type: 2}
+  - {fileID: 11400000, guid: 3c83922aea725d541a4b7dbd82c76a36, type: 2}
+  rightNeighbours:
+  - {fileID: 11400000, guid: db68a43a7ecfccf4bab46749d346bfb1, type: 2}
+  downNeighbours:
+  - {fileID: 11400000, guid: b6f74d1aea638c14dab5a14eb52df261, type: 2}
+  - {fileID: 11400000, guid: 3c83922aea725d541a4b7dbd82c76a36, type: 2}
+  leftNeighbours:
+  - {fileID: 11400000, guid: b6f74d1aea638c14dab5a14eb52df261, type: 2}
+  - {fileID: 11400000, guid: 3c83922aea725d541a4b7dbd82c76a36, type: 2}
+  tileSprite: {fileID: 2591178, guid: 54e85fed649edd14b9659f135e4c57dd, type: 3}
+  isWalkable: 1

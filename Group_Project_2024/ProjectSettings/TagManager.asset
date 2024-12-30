@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Road
   - Enemyroom2
+  - Lava
   layers:
   - Default
   - TransparentFX
