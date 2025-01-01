@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = enemySpawnPoint.transform.position;
+        Vector2 spawnPosition = enemySpawnPoint.transform.position;
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawnPosition, out hit, 1.0f, NavMesh.AllAreas))
