@@ -55,15 +55,16 @@ public class RatEnemy : MonoBehaviour
     {
         if (target != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
             // Handle movement and animations based on the player's distance
+            Debug.Log("Distance " + distanceToTarget);
             if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance)
             {
                 // Player within safeDistance but not stopDistance
                 isPlayerInRange = false;
                 agent.SetDestination(target.position);
                 SetAnimationState(run: true, idle: false);
+                Debug.Log("Chase");
             }
             else if (distanceToTarget <= stopDistance)
             {
@@ -78,13 +79,15 @@ public class RatEnemy : MonoBehaviour
                     PerformAttack();
                     lastAttackTime = Time.time;
                 }
+                Debug.Log("In range");
             }
-            else
+            else if (distanceToTarget > safeDistance)
             {
                 // Player out of range
                 isPlayerInRange = false;
                 agent.ResetPath();
                 SetAnimationState(run: false, idle: true);
+                Debug.Log("Out of range");
             }
 
             // Flip sprite based on player's position
