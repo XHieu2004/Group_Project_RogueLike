@@ -12,10 +12,10 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnEnemyCoroutine());
+        //StartCoroutine(SpawnEnemyCoroutine());
     }
 
-    private IEnumerator SpawnEnemyCoroutine()
+    public IEnumerator SpawnEnemyCoroutine()
     {
         while (currentEnemyCount < maxEnemies)
         {
@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition = enemySpawnPoint.transform.position; // Lấy vị trí của Enemy Spawn
+        Vector3 spawnPosition = enemySpawnPoint.transform.position;
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawnPosition, out hit, 1.0f, NavMesh.AllAreas))
@@ -44,6 +44,21 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning("Spawn Error, object not on navmesh surface");
         }
+    }
+
+    public void ResetEnemyCount()
+    {
+        currentEnemyCount = 0;
+    }
+
+    public IEnumerator SpawnBossEnemyCoroutine()
+    {
+        while (currentEnemyCount < maxEnemies)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(spawnInterval);
+        }
+        ResetEnemyCount();
     }
 
     public void DecreaseEnemyCount()

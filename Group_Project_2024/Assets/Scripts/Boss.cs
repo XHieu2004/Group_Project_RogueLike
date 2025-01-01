@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,10 @@ public class Boss : MonoBehaviour
     private float lastAttackTime = -Mathf.Infinity; // Time of the last attack
     private bool isPlayerInRange = false; // Track if the player is within attack range
 
+    public EnemySpawner[] enemySpawners;
+    private EnemyHealth enemyHealth;
+    private int spawnCount = 0;
+
     private void OnDrawGizmos()
     {
         // Visualize safeDistance and stopDistance
@@ -33,6 +38,7 @@ public class Boss : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        enemyHealth = GetComponent<EnemyHealth>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
@@ -55,15 +61,16 @@ public class Boss : MonoBehaviour
     {
         if (target != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
             // Handle movement and animations based on the player's distance
-            if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance)
+            Debug.Log("Distance " + distanceToTarget);
+            if(distanceToTarget <= safeDistance && distanceToTarget > stopDistance)
             {
                 // Player within safeDistance but not stopDistance
                 isPlayerInRange = false;
                 agent.SetDestination(target.position);
                 SetAnimationState(run: true, idle: false);
+                Debug.Log("Chase");
             }
             else if (distanceToTarget <= stopDistance)
             {
@@ -75,29 +82,66 @@ public class Boss : MonoBehaviour
                 // Attack if cooldown has elapsed
                 if (Time.time >= lastAttackTime + attackCooldown)
                 {
-                    PerformRandomAttack();
+                    PerformAttack();
                     lastAttackTime = Time.time;
                 }
+                Debug.Log("In range");
             }
-            else
+            else if(distanceToTarget > safeDistance)
             {
                 // Player out of range
                 isPlayerInRange = false;
                 agent.ResetPath();
                 SetAnimationState(run: false, idle: true);
+                Debug.Log("Out of range");
             }
 
             // Flip sprite based on player's position
             FlipSprite(target.position.x);
+            CheckHealth();
         }
     }
 
-    // Perform a random attack animation
-    private void PerformRandomAttack()
+    void CheckHealth()
     {
-        int randomAttack = Random.Range(1, 3); // Randomly choose between 1 or 2
-        animator.SetTrigger($"Attack {randomAttack}");
-        Debug.Log($"Performing attack: Attack_{randomAttack}");
+        if (enemyHealth.currentHealth <= enemyHealth.maxHealth*0.75 && spawnCount == 0)
+        {
+            animator.SetTrigger("Attack 1");
+            foreach(var item in enemySpawners)
+            {
+                StartCoroutine(item.SpawnBossEnemyCoroutine());
+            }
+            spawnCount++;
+            Debug.Log(spawnCount.ToString());
+        }
+        if(enemyHealth.currentHealth <= enemyHealth.maxHealth * 0.5 && spawnCount == 1)
+        {
+            animator.SetTrigger("Attack 1");
+            foreach (var item in enemySpawners)
+            {
+                StartCoroutine(item.SpawnBossEnemyCoroutine());
+            }
+            spawnCount++;
+            Debug.Log(spawnCount.ToString());
+        }
+        if (enemyHealth.currentHealth <= enemyHealth.maxHealth * 0.25 && spawnCount == 2)
+        {
+            animator.SetTrigger("Attack 1");
+            foreach (var item in enemySpawners)
+            {
+                StartCoroutine(item.SpawnBossEnemyCoroutine());
+            }
+            spawnCount++;
+            Debug.Log(spawnCount.ToString());
+        }
+
+    }
+
+    // Perform the single attack animation
+    private void PerformAttack()
+    {
+        animator.SetTrigger("Attack 2");
+        Debug.Log("Performing attack: Single Attack");
 
         // Cause damage to the player if within range
         DealDamageToPlayer();
@@ -112,7 +156,7 @@ public class Boss : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                Debug.Log($"Player took {damage} damage from MeleeEnemy.");
+                Debug.Log($"Player took {damage} damage from Boss.");
             }
             else
             {
