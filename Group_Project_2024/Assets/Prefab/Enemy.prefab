@@ -109,7 +109,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -653839932, guid: 8d5ee6431b292cd4c9e91c673fe7f035, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -155,11 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  safeDistance: 3
-  followDistance: 5
-  shootingRange: 3
+  safeDistance: 5
+  followDistance: 11
+  shootingRange: 13
   bullet: {fileID: 8832519421540026327, guid: f8ea4d94593047b488ffbfe3ef0401c5, type: 3}
-  bulletParent: {fileID: 934174534024303754}
+  bulletParent: {fileID: 6709085352329386018}
   attackCooldown: 1
 --- !u!195 &5354843108478097478
 NavMeshAgent:
@@ -198,6 +198,7 @@ MonoBehaviour:
   maxHealth: 100
   anim: {fileID: 7104747040440534788}
   disappearTime: 0.5
+  roomManager: {fileID: 0}
 --- !u!61 &9099144616100858743
 BoxCollider2D:
   m_ObjectHideFlags: 0

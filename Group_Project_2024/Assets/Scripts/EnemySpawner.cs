@@ -1,14 +1,13 @@
-using UnityEngine;
-using UnityEngine.AI; 
+﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject enemySpawnPoint; // Thêm tham chiếu tới object Enemy Spawn
     public float spawnInterval = 5f;
     public int maxEnemies = 100;
-    public Vector2 spawnAreaMin;
-    public Vector2 spawnAreaMax;
     private int currentEnemyCount = 0;
 
     void Start()
@@ -20,25 +19,24 @@ public class EnemySpawner : MonoBehaviour
     {
         while (currentEnemyCount < maxEnemies)
         {
-            
             SpawnEnemy();
-            
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     private void SpawnEnemy()
     {
-        Vector3 randomPosition = new Vector3(
-            Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-            1f, 
-            Random.Range(spawnAreaMin.y, spawnAreaMax.y)
-        );
+        if (enemySpawnPoint == null)
+        {
+            Debug.LogError("Enemy Spawn Point is not assigned!");
+            return;
+        }
+
+        Vector3 spawnPosition = enemySpawnPoint.transform.position; // Lấy vị trí của Enemy Spawn
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPosition, out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(spawnPosition, out hit, 1.0f, NavMesh.AllAreas))
         {
-            
             Instantiate(enemyPrefab, hit.position, Quaternion.identity);
             currentEnemyCount++;
         }
