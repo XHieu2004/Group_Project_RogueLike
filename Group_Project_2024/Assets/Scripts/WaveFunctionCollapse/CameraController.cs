@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         // Ensure only the main camera is active at the start of the game
+        mainCamera = Camera.main;
         if (mainCamera != null)
             mainCamera.gameObject.SetActive(true);
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,18 +7,18 @@ public class ProjectTile : MonoBehaviour
     public float bulletSpeed;
     private Vector2 direction;
     private bool hit;
-    private Animator anim;
+    public Animator anim;
     private CapsuleCollider2D capCollider;
     private Rigidbody2D rb;
     private float lifetime;
     public int damage = 20;
+    
 
-    private void Awake(){
+    private void Start(){
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         capCollider = GetComponent<CapsuleCollider2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-
     }
 
     private void FixedUpdate(){
@@ -56,7 +57,7 @@ public class ProjectTile : MonoBehaviour
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Explode"); 
 
-        Invoke("Deactivate", 0.1f);
+        Invoke("Deactivate", 0.3f);
     }
 
     public void SetDirection(Vector2 _direction){
