@@ -55,7 +55,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (target != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
             // Handle movement and animations based on the player's distance
             if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance)

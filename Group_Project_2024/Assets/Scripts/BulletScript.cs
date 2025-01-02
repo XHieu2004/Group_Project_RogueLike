@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
     public float speed;
     Rigidbody2D bulletRB;
     public int damage;
-    
+    public float selfDestructTime = 3f; // Thời gian tự hủy (giây)
 
     void Start()
     {
@@ -22,25 +22,22 @@ public class BulletScript : MonoBehaviour
         {
             Debug.LogError("Target not found. Bullet will not move.");
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.collider.CompareTag("Wall")){
-            Explode();
-        }
-        if (collision.collider.CompareTag("Player")){
-            Debug.Log("Bullet hit player!"); 
-            PlayerHealth player= collision.collider.GetComponent<PlayerHealth>();
-            if(player != null)
-            {
-                player.TakeDamage(damage); 
-            }
-            Explode();
 
-        }
-        
+        // Tự hủy sau selfDestructTime giây
+        Destroy(gameObject, selfDestructTime);
     }
-    public void Explode(){
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Bullet hit player!");
+            PlayerHealth player = collision.GetComponent<PlayerHealth>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
+        }
         Destroy(gameObject);
     }
-
 }

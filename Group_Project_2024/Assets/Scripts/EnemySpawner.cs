@@ -1,44 +1,42 @@
-using UnityEngine;
-using UnityEngine.AI; 
+﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject enemySpawnPoint; // Thêm tham chiếu tới object Enemy Spawn
     public float spawnInterval = 5f;
     public int maxEnemies = 100;
-    public Vector2 spawnAreaMin;
-    public Vector2 spawnAreaMax;
     private int currentEnemyCount = 0;
 
     void Start()
     {
-        StartCoroutine(SpawnEnemyCoroutine());
+        //StartCoroutine(SpawnEnemyCoroutine());
     }
 
-    private IEnumerator SpawnEnemyCoroutine()
+    public IEnumerator SpawnEnemyCoroutine()
     {
         while (currentEnemyCount < maxEnemies)
         {
-            
             SpawnEnemy();
-            
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     private void SpawnEnemy()
     {
-        Vector3 randomPosition = new Vector3(
-            Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-            1f, 
-            Random.Range(spawnAreaMin.y, spawnAreaMax.y)
-        );
+        if (enemySpawnPoint == null)
+        {
+            Debug.LogError("Enemy Spawn Point is not assigned!");
+            return;
+        }
+
+        Vector2 spawnPosition = enemySpawnPoint.transform.position;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPosition, out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(spawnPosition, out hit, 1.0f, NavMesh.AllAreas))
         {
-            
             Instantiate(enemyPrefab, hit.position, Quaternion.identity);
             currentEnemyCount++;
         }
@@ -46,6 +44,21 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning("Spawn Error, object not on navmesh surface");
         }
+    }
+
+    public void ResetEnemyCount()
+    {
+        currentEnemyCount = 0;
+    }
+
+    public IEnumerator SpawnBossEnemyCoroutine()
+    {
+        while (currentEnemyCount < maxEnemies)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(spawnInterval);
+        }
+        ResetEnemyCount();
     }
 
     public void DecreaseEnemyCount()
