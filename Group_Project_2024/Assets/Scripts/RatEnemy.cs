@@ -55,20 +55,21 @@ public class RatEnemy : MonoBehaviour
     {
         if (target != null)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
-            // Handle movement and animations based on the player's distance
-            if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance)
+            if (distanceToTarget <= safeDistance && distanceToTarget > stopDistance + 0.1f)
             {
                 // Player within safeDistance but not stopDistance
                 isPlayerInRange = false;
+                agent.isStopped = false; // Allow movement
                 agent.SetDestination(target.position);
                 SetAnimationState(run: true, idle: false);
             }
-            else if (distanceToTarget <= stopDistance)
+            else if (distanceToTarget <= stopDistance + 0.1f)
             {
                 // Player within attack range
                 isPlayerInRange = true;
+                agent.isStopped = true; // Stop movement
                 agent.ResetPath();
                 SetAnimationState(run: false, idle: false);
 
@@ -79,10 +80,11 @@ public class RatEnemy : MonoBehaviour
                     lastAttackTime = Time.time;
                 }
             }
-            else
+            else if (distanceToTarget > safeDistance)
             {
                 // Player out of range
                 isPlayerInRange = false;
+                agent.isStopped = true; // Stop movement
                 agent.ResetPath();
                 SetAnimationState(run: false, idle: true);
             }
@@ -92,17 +94,12 @@ public class RatEnemy : MonoBehaviour
         }
     }
 
-    // Perform the single attack animation
     private void PerformAttack()
     {
         animator.SetTrigger("Attack");
-        Debug.Log("Performing attack: Single Attack");
-
-        // Cause damage to the player if within range
         DealDamageToPlayer();
     }
 
-    // Flip the sprite based on the player's position
     private void FlipSprite(float targetX)
     {
         if (spriteRenderer != null)
@@ -111,7 +108,6 @@ public class RatEnemy : MonoBehaviour
         }
     }
 
-    // Set animation state for "Run" and "Idle"
     private void SetAnimationState(bool run, bool idle)
     {
         if (animator != null)
@@ -121,13 +117,11 @@ public class RatEnemy : MonoBehaviour
         }
     }
 
-    // Animation event handler for attack completion
     public void EndAttack()
     {
         Debug.Log("Animation event: Attack finished.");
     }
 
-    // Deal damage to the player
     private void DealDamageToPlayer()
     {
         if (isPlayerInRange && target != null)
@@ -136,7 +130,7 @@ public class RatEnemy : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                Debug.Log($"Player took {damage} damage from MeleeEnemy.");
+                Debug.Log($"Player took {damage} damage from RatEnemy.");
             }
             else
             {

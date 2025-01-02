@@ -22,10 +22,10 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
-
+        anim.SetTrigger("Hurt");
         currentHealth -= damage;
         UpdateHealthBar();
-        anim.SetTrigger("Hurt"); 
+        //anim.SetTrigger("Hurt"); 
 
         if (currentHealth <= 0)
         {
