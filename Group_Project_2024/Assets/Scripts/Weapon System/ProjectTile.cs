@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectTile : MonoBehaviour
@@ -28,32 +29,35 @@ public class ProjectTile : MonoBehaviour
         if (lifetime > 10) gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
-        if (collision.collider.CompareTag("Wall")){
-            Explode();
-        }
-        if (collision.collider.CompareTag("Enemy")){
+    private void OnCollisionEnter2D(Collision2D collision){        
+        Explode();
+        return;
+    }
+    private void OnTriggerEnter2D(Collider2D collider2D){
+        if (collider2D.CompareTag("Enemy")){
             Debug.Log("Bullet hit enemy!"); 
-            EnemyHealth enemy = collision.collider.GetComponent<EnemyHealth>();
+            EnemyHealth enemy = collider2D.GetComponent<EnemyHealth>();
             if(enemy != null)
             {
                 enemy.TakeDamage(damage); 
             }
             Explode();
+            return;
         }
-        if (collision.collider.CompareTag("Enemyroom2")){
+        if (collider2D.CompareTag("Enemyroom2")){
             Debug.Log("Bullet hit enemy!"); 
-            EnemyHealthRoom2 enemy2 = collision.collider.GetComponent<EnemyHealthRoom2>();
+            EnemyHealthRoom2 enemy2 = collider2D.GetComponent<EnemyHealthRoom2>();
             if(enemy2 != null)
             {
                 enemy2.TakeDamage(damage); 
             }
             Explode();
+            return;
         }
     }
     public void Explode(){
         hit = true; 
-        capCollider.enabled = false; 
+        // capCollider.enabled = false; 
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Explode"); 
 
@@ -65,7 +69,7 @@ public class ProjectTile : MonoBehaviour
         direction = _direction.normalized;
         gameObject.SetActive(true);
         hit = false;
-        capCollider.enabled = true;
+        // capCollider.enabled = true;
 
         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
