@@ -14,13 +14,13 @@ public class WeaponController : MonoBehaviour
     public SpriteRenderer slot1Renderer;
     public SpriteRenderer slot2Renderer;
     public float bulletOffset = 1f;
-    private Camera mainCamera;
+    // private Camera mainCamera;
     private List<ProjectTile> bullets = new();
     private List<GameObject> pickable = new();
     private CircleCollider2D pickrange;
     void Start()
     {
-        mainCamera = Camera.main;
+        // mainCamera = Camera.main;
         pickrange = GetComponent<CircleCollider2D>();
         shooting = GetComponent<Shooting>();
         if(weaponSlot1 != null && weaponSlot2 != null){
@@ -104,7 +104,7 @@ public class WeaponController : MonoBehaviour
         }
     }
     void RotateWeaponToMouse(){
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition =Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f; 
 
         
@@ -125,6 +125,7 @@ public class WeaponController : MonoBehaviour
             {
                 weaponSlot1.transform.localScale = new Vector3(1, 1, 1);
             }
+        Debug.Log("Rotated!!!!");
         
     }
     void OnTriggerStay2D(Collider2D collider){

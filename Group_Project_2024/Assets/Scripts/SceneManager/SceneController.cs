@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +5,7 @@ public class SceneController : MonoBehaviour
 {
     
     public GameObject player;
+
     void Awake()
     {   
 
@@ -24,8 +24,9 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(weaponController.weaponSlot1);
         DontDestroyOnLoad(weaponController.weaponSlot2);
 
+
         if(scene.name == "Level 2"){
-            player.transform.position = new Vector3(-1.73f, -89.73f, -1);
+            player.transform.position = new Vector3(-3.83f, -92.43f, -1);
         }
     }
 }
