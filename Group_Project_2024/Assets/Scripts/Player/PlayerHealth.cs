@@ -24,8 +24,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
         anim.SetTrigger("Hurt");
         currentHealth -= damage;
-        UpdateHealthBar();
-        //anim.SetTrigger("Hurt"); 
+        UpdateHealthBar(); 
 
         if (currentHealth <= 0)
         {

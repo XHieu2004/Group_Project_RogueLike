@@ -5,12 +5,14 @@ public class SceneController : MonoBehaviour
 {
     
     public GameObject player;
+    public GameObject UI;
 
     void Awake()
     {   
 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(player);
+        DontDestroyOnLoad(UI);
         SceneManager.sceneLoaded += PlayerOnSceneLoaded;
     }
 

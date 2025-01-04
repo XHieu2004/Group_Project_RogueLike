@@ -53,6 +53,7 @@ public class RatEnemy : MonoBehaviour
 
     private void Update()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         if (target != null)
         {
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
