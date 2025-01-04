@@ -159,7 +159,7 @@ MonoBehaviour:
   followDistance: 11
   shootingRange: 13
   bullet: {fileID: 8832519421540026327, guid: f8ea4d94593047b488ffbfe3ef0401c5, type: 3}
-  bulletParent: {fileID: 6709085352329386018}
+  bulletParent: {fileID: 934174534024303754}
   attackCooldown: 1
 --- !u!195 &5354843108478097478
 NavMeshAgent:
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 7104747040440534788}
   disappearTime: 0.5
   roomManager: {fileID: 0}
