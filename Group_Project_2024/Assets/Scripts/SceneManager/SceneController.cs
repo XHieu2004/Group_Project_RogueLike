@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SceneController : MonoBehaviour
 {
@@ -30,5 +31,13 @@ public class SceneController : MonoBehaviour
         if(scene.name == "Level 2"){
             player.transform.position = new Vector3(-3.83f, -92.43f, -1);
         }
+        // else if (scene.name == "GameScene") 
+        // {
+        // EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
+        // if (existingEventSystem != null)
+        // {
+        //     Destroy(existingEventSystem.gameObject);
+        // }
+        // }
     }
 }

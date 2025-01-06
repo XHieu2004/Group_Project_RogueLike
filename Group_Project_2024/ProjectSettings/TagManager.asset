@@ -11,6 +11,7 @@ TagManager:
   - Enemyroom2
   - Lava
   - Weapon
+  - RetryMenu
   layers:
   - Default
   - TransparentFX

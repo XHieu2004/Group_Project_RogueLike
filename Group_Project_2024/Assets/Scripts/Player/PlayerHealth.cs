@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     public  Image healthBar;
     public Animator anim;
     private bool isDead = false;
@@ -12,12 +12,13 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
+        
     }
 
     
     void Update()
     {
-        
+        UpdateHealthBar();
     }
     public void TakeDamage(int damage)
     {
@@ -45,5 +46,10 @@ public class PlayerHealth : MonoBehaviour
         FindObjectOfType<RetryMenu>().ShowRetryMenu();
         Time.timeScale = 0; 
         
+    }
+    public void ResetHP(){
+        anim.Play(anim.GetLayerName(0) + ".Idle");
+        currentHealth = maxHealth;
+        isDead = false;
     }
 }
