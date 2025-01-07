@@ -12,6 +12,18 @@ TagManager:
   - Lava
   - Weapon
   - RetryMenu
+  - Enemyroom1
+  - Enemyroom3
+  - Enemyroom4
+  - Enemyroom5
+  - Enemyroom6
+  - Enemyroom2.2
+  - Room1Manager
+  - Room2Manager
+  - Room3Manager
+  - Room4Manager
+  - Room5Manager
+  - Room6Manager
   layers:
   - Default
   - TransparentFX
