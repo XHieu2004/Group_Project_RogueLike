@@ -51,6 +51,7 @@ public class EnemyHealthLevel2 : MonoBehaviour
         {
             roomManager.EnemyDefeated();
         }
+        ScoreManager.Instance.AddScore(2);
 
         StartCoroutine(Disappear());
     }

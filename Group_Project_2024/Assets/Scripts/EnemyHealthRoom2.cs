@@ -50,6 +50,7 @@ public class EnemyHealthRoom2 : MonoBehaviour
         {
             roomManager.EnemyDefeated();
         }
+        ScoreManager.Instance.AddScore(2);
         //     if (spawner != null)
         // {
         //     spawner.DecreaseEnemyCount();
