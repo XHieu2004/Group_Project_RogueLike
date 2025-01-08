@@ -1,21 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class RoomManagerLevel2 : MonoBehaviour
 {
-    public List<GameObject> doors; // List of all doors in the room
-    private int enemyCount; // Total enemies in the room
-    private bool roomLocked = false; // Room lock state
-
-
+    public List<GameObject> doors; 
+    private int enemyCount; 
+    private bool roomLocked = false; 
+    public string enemyTag; 
 
     void Start()
     {
-        // Count enemies in the room
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemyroom2").Length; // Assuming enemies are children of this GameObject
+        enemyCount = GameObject.FindGameObjectsWithTag(enemyTag).Length;
         UnlockRoom();
-    
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,7 +20,7 @@ public class RoomManager : MonoBehaviour
         {
             if (enemyCount > 0)
             {
-                LockRoom(); // Lock the room if there are enemies
+                LockRoom(); 
             }
         }
     }
@@ -35,7 +31,7 @@ public class RoomManager : MonoBehaviour
 
         if (enemyCount <= 0 && roomLocked)
         {
-            UnlockRoom(); // Unlock the room when all enemies are defeated
+            UnlockRoom(); 
         }
     }
 
@@ -43,7 +39,7 @@ public class RoomManager : MonoBehaviour
     {
         roomLocked = true;
 
-        // Activate all doors to lock the room
+        // Kích hoạt cửa
         foreach (GameObject door in doors)
         {
             if (door != null)
@@ -58,15 +54,12 @@ public class RoomManager : MonoBehaviour
     private void UnlockRoom()
     {
         roomLocked = false;
-
-        // Deactivate or destroy all doors to unlock the room
+        
         foreach (GameObject door in doors)
         {
             if (door != null)
             {
-                door.SetActive(false); // Deactivate the door
-                // Or destroy the door instead:
-                // Destroy(door);
+                door.SetActive(false);
             }
         }
     }

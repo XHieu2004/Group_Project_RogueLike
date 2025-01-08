@@ -1,29 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealthRoom2 : MonoBehaviour
+public class EnemyHealthLevel2 : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
     public Animator anim;
     private bool isDeath;
     public float disappearTime = 0.5f;
-    // private EnemySpawner spawner;
-    public RoomManager roomManager;
-   
-
-
+    private RoomManagerLevel2 roomManager;
 
     void Start()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        // spawner = FindObjectOfType<EnemySpawner>();
+        roomManager = GetComponentInParent<RoomManagerLevel2>();
+        if (roomManager == null)
+        {
+            Debug.LogError("RoomManager not found on the parent of " + gameObject.name);
+        }
     }
+
     void Update()
     {
         if (isDeath) { return; }
     }
+
     public void TakeDamage(int damage)
     {
         if (isDeath) { return; }
@@ -45,23 +47,17 @@ public class EnemyHealthRoom2 : MonoBehaviour
         {
             enemyCollider.enabled = false;
         }
-
         if (roomManager != null)
         {
             roomManager.EnemyDefeated();
         }
-        //     if (spawner != null)
-        // {
-        //     spawner.DecreaseEnemyCount();
-        // }
-
 
         StartCoroutine(Disappear());
     }
+
     private IEnumerator Disappear()
     {
         yield return new WaitForSeconds(disappearTime);
         Destroy(gameObject);
     }
-
 }

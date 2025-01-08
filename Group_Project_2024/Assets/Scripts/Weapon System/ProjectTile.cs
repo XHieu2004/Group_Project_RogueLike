@@ -54,6 +54,17 @@ public class ProjectTile : MonoBehaviour
             Explode();
             return;
         }
+        if (collider2D.CompareTag("Enemyroom1") || collider2D.CompareTag("Enemyroom2.2") || collider2D.CompareTag("Enemyroom3") || collider2D.CompareTag("Enemyroom4")
+        || collider2D.CompareTag("Enemyroom5") || collider2D.CompareTag("Enemyroom6")){
+            Debug.Log("Bullet hit enemy!"); 
+            EnemyHealthLevel2 enemyLevel2 = collider2D.GetComponent<EnemyHealthLevel2>();
+            if(enemyLevel2 != null)
+            {
+                enemyLevel2.TakeDamage(damage); 
+            }
+            Explode();
+            return;
+        }
     }
     public void Explode(){
         hit = true; 
