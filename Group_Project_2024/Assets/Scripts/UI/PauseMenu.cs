@@ -20,11 +20,15 @@ public class PauseMenu : MonoBehaviour
 
     public void OnPauseButtonClicked()
     {
-        PauseGame();
-        Debug.Log("Game Paused!");
-        isPaused = true;
+        // PauseGame();
+        // Debug.Log("Game Paused!");
+        // isPaused = true;
    
-        Debug.Log("Button Cliked!");
+        // Debug.Log("Button Cliked!");
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.PauseGame();
+        }
     }
     public void ExitPauseMenu(){
         if(isPaused == true){
@@ -33,14 +37,14 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void PauseGame()
-    {
-        Time.timeScale = 0f; 
-        if (pausePanel != null)
-        {
-            pausePanel.SetActive(true); 
-        }
-    }
+    // void PauseGame()
+    // {
+    //     Time.timeScale = 0f; 
+    //     if (pausePanel != null)
+    //     {
+    //         pausePanel.SetActive(true); 
+    //     }
+    // }
 
     void ResumeGame()
     {
@@ -53,12 +57,18 @@ public class PauseMenu : MonoBehaviour
 
     public void OnResumeButtonClicked()
     {
-        Debug.Log("Resume Button Clicked");
-        ResumeGame(); 
+        // Debug.Log("Resume Button Clicked");
+        // ResumeGame(); 
+         if (GameController.Instance != null){
+            GameController.Instance.ResumeGame();
+        }
     }
 
     public void OnExitButtonClicked()
     {
-        Debug.Log("Exit Button Clicked");
+        // Debug.Log("Exit Button Clicked");
+        if (GameController.Instance != null){
+            GameController.Instance.ExitGame();
+        }
     }
 }

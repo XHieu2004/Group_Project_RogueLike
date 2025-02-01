@@ -18,9 +18,22 @@ public class Shooting : MonoBehaviour
         cooldownTimer += Time.deltaTime;
     }
     private void Shoot(){
-        bullets[FindBullet()].transform.position = bulletPoint.position;
+        int i = FindBullet();
+        bullets[i].transform.position = bulletPoint.position;
         Vector2 direction = bulletPoint.right;
-        bullets[FindBullet()].GetComponent<ProjectTile>().SetDirection(direction); 
+        
+        bullets[i].GetComponent<ProjectTile>().SetDirection(direction); 
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        bulletPoint.rotation  = Quaternion.Euler(0, 0,angle);
+        if (angle > 90 || angle < -90)
+        {
+            bullets[i].transform.localScale = new Vector3(1, -1, 1);
+        }
+        else
+        {
+            bullets[i].transform.localScale = new Vector3(1, 1, 1);
+        }
         cooldownTimer = 0f;
         if (audioSource != null){
             audioSource.Play();

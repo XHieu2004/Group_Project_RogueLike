@@ -21,6 +21,7 @@ public class SceneController : MonoBehaviour
     void PlayerOnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
+        
         Animator playerAnimator = player.GetComponent<Animator>();
         playerAnimator.Play(playerAnimator.GetLayerName(0) + ".Idle");
         WeaponController weaponController = player.GetComponentInChildren<WeaponController>();
@@ -30,6 +31,9 @@ public class SceneController : MonoBehaviour
 
         if(scene.name == "Level 2"){
             player.transform.position = new Vector3(-3.83f, -92.43f, -1);
+        }
+        else if(scene.name == "Boss"){
+            player.transform.position = new Vector3(-1.2f, -99.4f, -3.366f);
         }
         // else if (scene.name == "GameScene") 
         // {
