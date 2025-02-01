@@ -21,6 +21,7 @@ public class SceneController : MonoBehaviour
     void PlayerOnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
+        
         Animator playerAnimator = player.GetComponent<Animator>();
         playerAnimator.Play(playerAnimator.GetLayerName(0) + ".Idle");
         WeaponController weaponController = player.GetComponentInChildren<WeaponController>();

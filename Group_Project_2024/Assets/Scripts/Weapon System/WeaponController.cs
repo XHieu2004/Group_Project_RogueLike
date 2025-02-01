@@ -117,14 +117,14 @@ public class WeaponController : MonoBehaviour
         weaponSlot1.transform.rotation = Quaternion.Euler(0, 0, angle);
         bulletPoint.rotation  = Quaternion.Euler(0, 0,angle);
         if (angle > 90 || angle < -90)
-            {
-                weaponSlot1.transform.localScale = new Vector3(1, -1, 1); 
-                
-            }
-            else
-            {
-                weaponSlot1.transform.localScale = new Vector3(1, 1, 1);
-            }
+        {
+            weaponSlot1.transform.localScale = new Vector3(1, -1, 1); 
+            
+        }
+        else
+        {
+            weaponSlot1.transform.localScale = new Vector3(1, 1, 1);
+        }
         Debug.Log("Rotated!!!!");
         
     }

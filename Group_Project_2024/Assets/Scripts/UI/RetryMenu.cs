@@ -7,7 +7,7 @@ public class RetryMenu : MonoBehaviour
     public GameObject retryMenu;
     public AudioSource gameTrack;
     public AudioSource gameOver;
-    private GameObject player; // Store the Player GameObject
+    private GameObject player; 
 
     void Start()
     {
@@ -22,45 +22,49 @@ public class RetryMenu : MonoBehaviour
 
     public void ShowRetryMenu()
     {
-        retryMenu.SetActive(true);
-        gameTrack.Stop();
-        gameOver.Play();
+        // retryMenu.SetActive(true);
+        // gameTrack.Stop();
+        // gameOver.Play();
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.ShowRetryMenu(); // Use GameManager's method
+        }
     }
 
     public void RetryGame()
     {
-        Time.timeScale = 1;
-        // EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
-        // if (existingEventSystem != null)
+        // Time.timeScale = 1;
+        // if (player != null)
         // {
-        //     Destroy(existingEventSystem.gameObject);
+        //     PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        //     if (playerHealth != null)
+        //     {
+        //         playerHealth.ResetHP();
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("PlayerHealth component not found on the Player GameObject!");
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.LogError("Player GameObject is null!");
         // }
 
-        if (player != null)
-        {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.ResetHP();
-            }
-            else
-            {
-                Debug.LogError("PlayerHealth component not found on the Player GameObject!");
-            }
+        // retryMenu.SetActive(false);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (GameController.Instance != null){
+            GameController.Instance.RetryLevel(); // Use GameManager's method
         }
-        else
-        {
-            Debug.LogError("Player GameObject is null!");
-        }
-
-        retryMenu.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ExitGame()
     {
-        Application.Quit();
-        retryMenu.SetActive(false);
-        Debug.Log("Exit successed?");
+        // Application.Quit();
+        // retryMenu.SetActive(false);
+        // Debug.Log("Exit successed?");
+        if (GameController.Instance != null){
+            GameController.Instance.ExitGame(); // Use GameManager's method
+        }
     }
 }

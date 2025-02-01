@@ -26552,7 +26552,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.33, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -27221,7 +27221,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.33, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -32191,6 +32191,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.17307, y: 0.95154583}
   m_EdgeRadius: 0
+--- !u!1 &1390249039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390249040}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: SpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390249040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390249039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.86, y: -93.4, z: 5.698311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427431662
 GameObject:
   m_ObjectHideFlags: 0
@@ -33151,7 +33182,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.33, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -68380,7 +68411,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.33, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -68907,3 +68938,4 @@ SceneRoots:
   - {fileID: 1730210156}
   - {fileID: 1500246938}
   - {fileID: 1175944870}
+  - {fileID: 1390249040}

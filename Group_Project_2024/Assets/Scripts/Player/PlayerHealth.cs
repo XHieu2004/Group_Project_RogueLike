@@ -12,6 +12,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
+        anim = GetComponent<Animator>();
+        if (GameController.Instance != null)
+        {
+            healthBar = GameController.Instance.PlayerInstance.GetComponent<PlayerHealth>().healthBar; 
+        }
         
     }
 
@@ -43,13 +48,18 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         anim.SetTrigger("Death");  
-        FindObjectOfType<RetryMenu>().ShowRetryMenu();
-        Time.timeScale = 0; 
+        // FindObjectOfType<RetryMenu>().ShowRetryMenu();
+        // Time.timeScale = 0; 
+        if (GameController.Instance != null){
+        GameController.Instance.ShowRetryMenu(); // Use GameManager to show retry menu
+        }
+    Time.timeScale = 0;
         
     }
     public void ResetHP(){
         anim.Play(anim.GetLayerName(0) + ".Idle");
         currentHealth = maxHealth;
         isDead = false;
+        UpdateHealthBar();
     }
 }

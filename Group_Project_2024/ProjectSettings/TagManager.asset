@@ -24,6 +24,7 @@ TagManager:
   - Room4Manager
   - Room5Manager
   - Room6Manager
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
