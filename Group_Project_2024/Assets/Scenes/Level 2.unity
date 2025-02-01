@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 69111046}
   disappearTime: 0.5
 --- !u!1 &140209048
 GameObject:
@@ -1227,7 +1227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 221703060}
   disappearTime: 0.5
 --- !u!1 &266168769
 GameObject:
@@ -26178,7 +26178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 388129183}
   disappearTime: 0.5
 --- !u!1 &389235334
 GameObject:
@@ -29316,7 +29316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 971240191}
   disappearTime: 0.5
 --- !u!1 &991433841
 GameObject:
@@ -29525,7 +29525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 991433847}
   disappearTime: 0.5
 --- !u!1 &996821452
 GameObject:
@@ -30878,7 +30878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1209568890}
   disappearTime: 0.5
 --- !u!1 &1218695396
 GameObject:
@@ -31463,7 +31463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1272889258}
   disappearTime: 0.5
 --- !u!1 &1295825215
 GameObject:
@@ -32098,7 +32098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1369953273}
   disappearTime: 0.5
 --- !u!1 &1378663233
 GameObject:
@@ -33100,7 +33100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1513152428}
   disappearTime: 0.5
 --- !u!1 &1537665844
 GameObject:
@@ -34230,7 +34230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1755689751}
   disappearTime: 0.5
 --- !u!1 &1764693498
 GameObject:
@@ -34439,7 +34439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1764693504}
   disappearTime: 0.5
 --- !u!1 &1781158727
 GameObject:
@@ -34648,7 +34648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 1781158733}
   disappearTime: 0.5
 --- !u!1 &1795098607
 GameObject:
@@ -68925,7 +68925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 0}
+  anim: {fileID: 2122050221}
   disappearTime: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
