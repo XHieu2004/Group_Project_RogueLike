@@ -750,11 +750,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 69111040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 69111046}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &140209048
 GameObject:
@@ -1223,11 +1224,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 221703054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 221703060}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &266168769
 GameObject:
@@ -26174,11 +26176,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 388129177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 388129183}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &389235334
 GameObject:
@@ -26643,10 +26646,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 410440503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &427667646
@@ -27312,10 +27316,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 572928300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &576467961
@@ -29312,11 +29317,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 971240185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 971240191}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &991433841
 GameObject:
@@ -29521,11 +29527,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 991433841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 991433847}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &996821452
 GameObject:
@@ -29709,7 +29716,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1912620733, guid: 007aa5ffce67c024bb85e9b0ba8fd509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -29730,10 +29737,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 996821452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1020754731
@@ -30083,7 +30091,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1912620733, guid: 007aa5ffce67c024bb85e9b0ba8fd509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -30104,10 +30112,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1069599121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1111997596
@@ -30874,11 +30883,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209568885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1209568890}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1218695396
 GameObject:
@@ -31459,11 +31469,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1272889253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1272889258}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1295825215
 GameObject:
@@ -31501,7 +31512,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c83922aea725d541a4b7dbd82c76a36, type: 2}
   - {fileID: 11400000, guid: 1811e07e7ff2a8d4e9399e934ad22486, type: 2}
   - {fileID: 11400000, guid: dfb63f45906ee1a448f0f71f1182bb26, type: 2}
-  mainCamera: {fileID: 576467963}
 --- !u!4 &1295825217
 Transform:
   m_ObjectHideFlags: 0
@@ -31864,7 +31874,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1912620733, guid: 007aa5ffce67c024bb85e9b0ba8fd509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -31885,10 +31895,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329997284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1369953267
@@ -32094,11 +32105,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369953267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1369953273}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1378663233
 GameObject:
@@ -32216,7 +32228,7 @@ Transform:
   m_GameObject: {fileID: 1390249039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.86, y: -93.4, z: 5.698311}
+  m_LocalPosition: {x: -2.7, y: 41.2, z: 5.698311}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33096,11 +33108,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513152422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1513152428}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1537665844
 GameObject:
@@ -33305,10 +33318,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537665844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1591983917
@@ -34226,11 +34240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755689746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1755689751}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1764693498
 GameObject:
@@ -34435,11 +34450,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1764693498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1764693504}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1781158727
 GameObject:
@@ -34644,11 +34660,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781158727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 1781158733}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1795098607
 GameObject:
@@ -67830,7 +67847,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1912620733, guid: 007aa5ffce67c024bb85e9b0ba8fd509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -67866,10 +67883,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957020186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &1992158740
@@ -68502,10 +68520,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2007084667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1 &2020854212
@@ -68921,11 +68940,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2122050216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bb5492bce094428cc3147040576f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  anim: {fileID: 2122050221}
+  currentHealth: 0
+  anim: {fileID: 0}
   disappearTime: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

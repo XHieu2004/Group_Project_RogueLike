@@ -25,6 +25,7 @@ TagManager:
   - Room5Manager
   - Room6Manager
   - SpawnPoint
+  - Boss
   layers:
   - Default
   - TransparentFX

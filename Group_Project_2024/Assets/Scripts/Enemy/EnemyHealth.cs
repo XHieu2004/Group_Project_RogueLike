@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHealthCombined : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     public Animator anim;
     private bool isDeath;
     public float disappearTime = 0.5f;

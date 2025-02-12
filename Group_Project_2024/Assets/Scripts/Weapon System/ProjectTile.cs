@@ -15,7 +15,7 @@ public class ProjectTile : MonoBehaviour
     private float lifetime;
     public int damage = 20;
 
-    public List<string> enemyTags = new List<string>() { "Enemy", "Enemyroom2", "Boss", "Enemyroom1" };
+    // public List<string> enemyTags = new List<string>() { "Enemy", "Enemyroom2", "Boss", "Enemyroom1", "Enemyroom2", "Enemyroom3", "Enemyroom4", "Enemyroom5" };
 
 
 
@@ -23,7 +23,7 @@ public class ProjectTile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        capCollider = GetComponent<CapsuleCollider2D>();
+        // capCollider = GetComponent<CapsuleCollider2D>();
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
@@ -44,10 +44,11 @@ public class ProjectTile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (enemyTags.Contains(collider2D.tag))
+        if (collider2D.CompareTag("Enemy") || collider2D.CompareTag("Enemyroom1") || collider2D.CompareTag("Enemyroom2") || collider2D.CompareTag("Enemyroom2.2")
+        || collider2D.CompareTag("Enemyroom3") || collider2D.CompareTag("Enemyroom4") || collider2D.CompareTag("Enemyroom5") || collider2D.CompareTag("Boss") )
         {
             Debug.Log("Bullet hit enemy!");
-            EnemyHealthCombined enemy = collider2D.GetComponent<EnemyHealthCombined>();
+            EnemyHealth enemy = collider2D.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
@@ -56,17 +57,17 @@ public class ProjectTile : MonoBehaviour
             return;
         }
 
-        if (collider2D.gameObject.layer == LayerMask.NameToLayer("Ground") || collider2D.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-             Explode();
-              return;
-        }
+        // if (collider2D.gameObject.layer == LayerMask.NameToLayer("Ground") || collider2D.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        // {
+        //      Explode();
+        //       return;
+        // }
     }
 
     public void Explode()
     {
         hit = true;
-        capCollider.enabled = false;  // Disable the collider *after* the hit.
+        // capCollider.enabled = false;  // Disable the collider *after* the hit.
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Explode");
 

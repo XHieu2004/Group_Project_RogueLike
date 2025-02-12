@@ -1,65 +1,167 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class WaveFunctionCollapse : MonoBehaviour
 {
-    public Tilemap roadTilemap;          // Tilemap where road tiles will be placed
-    public Tile placeholderTile;         // Tile used as a guide for generation
-    public Tile[] roadTiles;             // Array of road tiles to randomly choose from
-    public Camera mainCamera;            // Camera to get the screen bounds
+    public Tilemap roadTilemap;
+    public Tile placeholderTile;
+    public Tile[] roadTiles;
 
-    private List<Vector3Int> placeholderPositions = new List<Vector3Int>();  // List of positions with placeholders
+    private Dictionary<Vector3Int, Cell> cellMap = new Dictionary<Vector3Int, Cell>();
+    private PriorityQueue<Cell> entropyQueue;
 
     void Start()
     {
-        FindPlaceholderPositions();
-        GenerateRoads();
+        InitializeGrid();
+        PerformWFC();
     }
 
-    // Step 1: Find positions with placeholder tiles across the entire scene
-    void FindPlaceholderPositions()
+    void InitializeGrid()
     {
-        placeholderPositions.Clear();
+        entropyQueue = new PriorityQueue<Cell>();
 
-        // Get the world bounds from the camera (i.e., the visible area in the scene)
-        Vector3 cameraBottomLeft = mainCamera.ScreenToWorldPoint(Vector3.zero);
-        Vector3 cameraTopRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-
-        // Convert world bounds to grid coordinates
-        Vector3Int bottomLeftCell = roadTilemap.WorldToCell(cameraBottomLeft);
-        Vector3Int topRightCell = roadTilemap.WorldToCell(cameraTopRight);
-
-        // Iterate through all positions in the camera view range
-        for (int x = bottomLeftCell.x; x <= topRightCell.x; x++)
+        List<Vector3Int> placeholderPositions = FindPlaceholderPositions();
+        foreach (Vector3Int pos in placeholderPositions)
         {
-            for (int y = bottomLeftCell.y; y <= topRightCell.y; y++)
+            GameObject cellObject = new GameObject($"Cell_{pos.x}_{pos.y}");
+            cellObject.transform.parent = this.transform;
+            Cell newCell = cellObject.AddComponent<Cell>();
+            newCell.CreateCell(false, roadTiles);
+            cellMap.Add(pos, newCell);
+            entropyQueue.Enqueue(newCell);
+            roadTilemap.SetTile(pos, null);
+        }
+    }
+
+    List<Vector3Int> FindPlaceholderPositions()
+    {
+        List<Vector3Int> placeholderPositions = new List<Vector3Int>();
+        BoundsInt bounds = roadTilemap.cellBounds;
+
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
             {
-                Vector3Int position = new Vector3Int(x, y, 0);
-                if (roadTilemap.HasTile(position) && roadTilemap.GetTile(position) == placeholderTile)
+                Vector3Int tilePos = new Vector3Int(x, y, 0);
+                TileBase tile = roadTilemap.GetTile(tilePos);
+                if (tile != null && tile == placeholderTile)
                 {
-                    placeholderPositions.Add(position);
+                    placeholderPositions.Add(tilePos);
                 }
             }
         }
+        return placeholderPositions;
     }
 
-    // Step 2: Generate road tiles only at placeholder positions
-    void GenerateRoads()
+    void PerformWFC()
     {
-        foreach (Vector3Int position in placeholderPositions)
+        Dictionary<Vector3Int, Tile> tilesToRender = new Dictionary<Vector3Int, Tile>();
+
+        while (entropyQueue.Count > 0)
         {
-            PlaceRandomTile(position);
+            Cell cellToCollapse = GetLowestEntropyCell();
+            if (cellToCollapse == null) break;
+
+            Vector3Int cellPosition = cellMap.FirstOrDefault(x => x.Value == cellToCollapse).Key;
+            CollapseCell(cellToCollapse, cellPosition, tilesToRender);
+            PropagateConstraints(cellPosition);
+        }
+
+        foreach (var entry in tilesToRender)
+        {
+            roadTilemap.SetTile(entry.Key, entry.Value);
         }
     }
 
-    // Step 3: Place a random road tile at a specific position
-    void PlaceRandomTile(Vector3Int position)
+    Cell GetLowestEntropyCell()
     {
-        if (roadTiles.Length > 0)
+        if (entropyQueue.Count == 0) return null;
+        return entropyQueue.Dequeue();
+    }
+
+    void CollapseCell(Cell cell, Vector3Int position, Dictionary<Vector3Int, Tile> tilesToRender)
+    {
+        if (cell.tileOptions.Count == 0)
         {
-            Tile randomTile = roadTiles[Random.Range(0, roadTiles.Length)];
-            roadTilemap.SetTile(position, randomTile);
+            Debug.LogError("Contradiction at: " + position);
+            cell.RecreateCell(roadTiles);
+            entropyQueue.Enqueue(cell);
+            return;
+        }
+
+        Tile selectedTile = cell.tileOptions[UnityEngine.Random.Range(0, cell.tileOptions.Count)];
+        cell.collapsed = true;
+        cell.tileOptions.Clear();
+        cell.tileOptions.Add(selectedTile);
+        tilesToRender.Add(position, selectedTile);
+    }
+
+    void PropagateConstraints(Vector3Int collapsedPosition)
+    {
+        Queue<Vector3Int> propagationQueue = new Queue<Vector3Int>();
+        propagationQueue.Enqueue(collapsedPosition);
+
+        while (propagationQueue.Count > 0)
+        {
+            Vector3Int currentPos = propagationQueue.Dequeue();
+            Cell currentCell = cellMap[currentPos];
+
+            if (currentCell.tileOptions.Count == 0 || !currentCell.collapsed) continue;
+            Tile currentTile = currentCell.tileOptions[0];
+
+            Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+            List<Tile>[] neighborLists = { currentTile.upNeighbours, currentTile.rightNeighbours, currentTile.downNeighbours, currentTile.leftNeighbours };
+
+            for (int i = 0; i < directions.Length; i++)
+            {
+                Vector3Int neighborPos = currentPos + (Vector3Int)directions[i];
+                if (cellMap.ContainsKey(neighborPos))
+                {
+                    Cell neighborCell = cellMap[neighborPos];
+                    if (neighborCell.collapsed) continue;
+
+                    List<Tile> optionsToRemove = new List<Tile>();
+                    foreach (Tile option in neighborCell.tileOptions)
+                    {
+                        if (!neighborLists[i].Contains(option))
+                        {
+                            optionsToRemove.Add(option);
+                        }
+                    }
+                    bool changed = false;
+                    foreach (Tile toRemove in optionsToRemove)
+                    {
+                        if (neighborCell.RemoveOption(toRemove))
+                        {
+                            changed = true;
+                        }
+                    }
+                    if (changed)
+                    {
+                        if (entropyQueue.Contains(neighborCell))
+                        {
+                            PriorityQueue<Cell> tempQueue = new PriorityQueue<Cell>();
+                            while (entropyQueue.Count > 0)
+                            {
+                                Cell tempCell = entropyQueue.Dequeue();
+                                if (tempCell != neighborCell)
+                                {
+                                    tempQueue.Enqueue(tempCell);
+                                }
+                            }
+                            while (tempQueue.Count > 0)
+                            {
+                                entropyQueue.Enqueue(tempQueue.Dequeue());
+                            }
+                        }
+                        entropyQueue.Enqueue(neighborCell);
+                        propagationQueue.Enqueue(neighborPos);
+                    }
+                }
+            }
         }
     }
 }

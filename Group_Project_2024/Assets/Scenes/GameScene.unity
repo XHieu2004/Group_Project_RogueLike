@@ -876,6 +876,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8112322377100668931, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
   m_PrefabInstance: {fileID: 357887239832086279}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &235457364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2991948463341399406, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
+  m_PrefabInstance: {fileID: 357887239832086279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265804236
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b60937c02a10e49bd710f8627ec366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -1083,6 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 265804241}
   disappearTime: 0.5
 --- !u!1 &272379399
@@ -1214,7 +1220,6 @@ Transform:
   - {fileID: 368040909}
   - {fileID: 1028982310}
   - {fileID: 1867176958}
-  - {fileID: 999492409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &328217777
@@ -1273,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b60937c02a10e49bd710f8627ec366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -1424,6 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 328217782}
   disappearTime: 0.5
 --- !u!1 &339413679
@@ -3241,7 +3247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920fc825a38202e438f0107a207b8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -3259,6 +3265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 664768294}
   disappearTime: 0.5
 --- !u!1 &694248069
@@ -3779,7 +3786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b60937c02a10e49bd710f8627ec366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -3952,6 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 850489293}
   disappearTime: 0.5
 --- !u!1 &859972027
@@ -5986,8 +5994,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999492408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6761549, y: -7.456797, z: 0.015198361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6003,7 +6011,7 @@ Transform:
   - {fileID: 1318651293}
   - {fileID: 386973151}
   - {fileID: 20557124}
-  m_Father: {fileID: 296786567}
+  m_Father: {fileID: 1164010917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014877769
 GameObject:
@@ -6367,7 +6375,8 @@ Transform:
   m_LocalPosition: {x: -3.6761549, y: 7.456797, z: -0.015198361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 999492409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1164010918
@@ -6418,7 +6427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b60937c02a10e49bd710f8627ec366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -6591,6 +6600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 1167987283}
   disappearTime: 0.5
 --- !u!1 &1225822965
@@ -6762,7 +6772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 235457355}
   playerSpawnPoint: {fileID: 0}
-  UI: {fileID: 0}
+  UI: {fileID: 983117843}
   pauseMenuCanvas: {fileID: 2123594307}
   retryMenuCanvas: {fileID: 1629026219}
   scoreText: {fileID: 639411143}
@@ -7472,7 +7482,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 825931a317b4e734f84686c38a23e486, type: 2}
   - {fileID: 11400000, guid: bf4ecdd0fbb1942468d7c95ab9e6323b, type: 2}
   - {fileID: 11400000, guid: 60f3cef3f3d5a2243b3334db7962d848, type: 2}
-  mainCamera: {fileID: 1340574901}
 --- !u!1 &1503240377
 GameObject:
   m_ObjectHideFlags: 0
@@ -9132,7 +9141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920fc825a38202e438f0107a207b8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 1.5
   attackCooldown: 2
@@ -9305,6 +9314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 1807678640}
   disappearTime: 0.5
 --- !u!1 &1822320260
@@ -25528,7 +25538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920fc825a38202e438f0107a207b8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 235457364}
   safeDistance: 10
   stopDistance: 3.29
   attackCooldown: 1
@@ -25701,6 +25711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
   anim: {fileID: 2049704861}
   disappearTime: 0.5
 --- !u!1 &2120776925
