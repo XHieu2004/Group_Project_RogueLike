@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomManagerLevel2 : MonoBehaviour
+public class RoomManager : MonoBehaviour
 {
     public List<GameObject> doors; 
     private int enemyCount; 

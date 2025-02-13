@@ -137,9 +137,10 @@ GameObject:
   - component: {fileID: 19080834}
   - component: {fileID: 19080835}
   - component: {fileID: 19080836}
+  - component: {fileID: 19080837}
   m_Layer: 0
   m_Name: BOSS
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,12 +205,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19080829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.6, y: 32.8, z: -2.207827}
-  m_LocalScale: {x: 10, y: 10, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.866667, y: 10.933333, z: -0.73594236}
+  m_LocalScale: {x: 3.3333335, y: 3.3333335, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1446215014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &19080832
 Animator:
@@ -337,6 +338,22 @@ MonoBehaviour:
   - {fileID: 1586923671}
   - {fileID: 1902151557}
   - {fileID: 1875598844}
+--- !u!114 &19080837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19080829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  anim: {fileID: 19080832}
+  disappearTime: 0.5
 --- !u!1 &22534435
 GameObject:
   m_ObjectHideFlags: 0
@@ -32779,7 +32796,6 @@ GameObject:
   - component: {fileID: 1083752016}
   - component: {fileID: 1083752015}
   - component: {fileID: 1083752017}
-  - component: {fileID: 1083752018}
   m_Layer: 5
   m_Name: DecorativeTilemap
   m_TagString: Untagged
@@ -34225,51 +34241,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!61 &1083752018
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083752013}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.5, y: 14.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 101, y: 37}
-  m_EdgeRadius: 0
 --- !u!1001 &1206921409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34682,7 +34653,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3c83922aea725d541a4b7dbd82c76a36, type: 2}
   - {fileID: 11400000, guid: 1811e07e7ff2a8d4e9399e934ad22486, type: 2}
   - {fileID: 11400000, guid: dfb63f45906ee1a448f0f71f1182bb26, type: 2}
-  mainCamera: {fileID: 2077511407}
 --- !u!1 &1329476613
 GameObject:
   m_ObjectHideFlags: 0
@@ -34903,6 +34873,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446215014}
+  - component: {fileID: 1446215015}
+  - component: {fileID: 1446215016}
   m_Layer: 0
   m_Name: RoomBoss
   m_TagString: Untagged
@@ -34922,9 +34894,71 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 19080831}
   m_Father: {fileID: 1014758507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446215015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446215013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7d5280c7030b341a658d01271cc985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors:
+  - {fileID: 63418467}
+  - {fileID: 1986463215}
+  enemyTag: Boss
+--- !u!61 &1446215016
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446215013}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25235558, y: -3.474739}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 12.297754, y: 2.3588371}
+  m_EdgeRadius: 0
 --- !u!1 &1586923670
 GameObject:
   m_ObjectHideFlags: 0
@@ -35985,7 +36019,6 @@ SceneRoots:
   - {fileID: 147882089}
   - {fileID: 1329476620}
   - {fileID: 2063061855}
-  - {fileID: 19080831}
   - {fileID: 1233048988}
   - {fileID: 1586923672}
   - {fileID: 1902151558}
@@ -35997,3 +36030,4 @@ SceneRoots:
   - {fileID: 1081733735}
   - {fileID: 407109387}
   - {fileID: 2085805805}
+  - {fileID: 1631460548}

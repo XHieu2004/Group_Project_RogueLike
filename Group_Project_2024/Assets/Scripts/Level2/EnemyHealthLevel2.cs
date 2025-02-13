@@ -8,13 +8,13 @@ public class EnemyHealthLevel2 : MonoBehaviour
     public Animator anim;
     private bool isDeath;
     public float disappearTime = 0.5f;
-    private RoomManagerLevel2 roomManager;
+    private RoomManager roomManager;
 
     void Start()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        roomManager = GetComponentInParent<RoomManagerLevel2>();
+        roomManager = GetComponentInParent<RoomManager>();
         if (roomManager == null)
         {
             Debug.LogError("RoomManager not found on the parent of " + gameObject.name);
