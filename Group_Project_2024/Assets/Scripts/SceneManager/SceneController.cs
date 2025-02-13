@@ -13,7 +13,6 @@ public class SceneController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(player);
-        DontDestroyOnLoad(UI);
         SceneManager.sceneLoaded += PlayerOnSceneLoaded;
     }
 

@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 7104747040440534788}
   - component: {fileID: 8041216336479441897}
   - component: {fileID: 5354843108478097478}
-  - component: {fileID: 3630628505086487389}
   - component: {fileID: 9099144616100858743}
+  - component: {fileID: 2085003731815034662}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -183,23 +183,6 @@ NavMeshAgent:
   m_BaseOffset: 0.285
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3630628505086487389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6709085352329386018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5278dab0cfd6a54f9a50be86725a09d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  anim: {fileID: 7104747040440534788}
-  disappearTime: 0.5
-  roomManager: {fileID: 0}
 --- !u!61 &9099144616100858743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -245,3 +228,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2277274, y: 1.243428}
   m_EdgeRadius: 0
+--- !u!114 &2085003731815034662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6709085352329386018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245079b4cfbda704fb6d1685eb8d4c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  anim: {fileID: 7104747040440534788}
+  disappearTime: 0.5

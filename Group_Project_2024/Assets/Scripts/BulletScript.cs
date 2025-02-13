@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
     public float speed;
     Rigidbody2D bulletRB;
     public int damage;
-    public float selfDestructTime = 3f; // Thời gian tự hủy (giây)
+    public float selfDestructTime = 5f; // Thời gian tự hủy (giây)
 
     void Start()
     {

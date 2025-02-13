@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +18,8 @@ public class GameController : MonoBehaviour
     public GameObject pauseMenuCanvas;
     public GameObject retryMenuCanvas;
     public TextMeshProUGUI scoreText;
+    public GameObject loadingScreen;
+    public Image LoadingBarFill;
 
     [Header("Audio")]
     public AudioSource gameTrack;
@@ -60,6 +64,10 @@ public class GameController : MonoBehaviour
         if (retryMenuCanvas != null)
         {
             retryMenuCanvas.SetActive(false);
+        }
+        if(loadingScreen!= null)
+        {
+            loadingScreen.SetActive(false);
         }
 
     }
@@ -150,8 +158,35 @@ public class GameController : MonoBehaviour
 
     public void RetryLevel()
     {
+        if (player != null)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.ResetHP();
+            }
+            else
+            {
+                Debug.LogError("PlayerHealth component not found on the Player GameObject!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player GameObject is null!");
+        }
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
+        if (existingEventSystem != null)
+        {
+            Destroy(existingEventSystem.gameObject);
+        }
+        if (pauseMenuCanvas != null){
+        pauseMenuCanvas.SetActive(false);
+        }
+        if (retryMenuCanvas != null){
+            retryMenuCanvas.SetActive(false);
+        }
+        StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void ExitGame()
@@ -161,6 +196,29 @@ public class GameController : MonoBehaviour
 
     public void LoadNextLevel(int levelName)
     {
-        SceneManager.LoadSceneAsync(levelName);
+        StartCoroutine(LoadSceneAsync(levelName));
+    }
+    private IEnumerator LoadSceneAsync(int sceneIndex){
+         if (loadingScreen != null)
+        {
+            loadingScreen.SetActive(true);
+        }
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        // Update loading bar
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+            if (LoadingBarFill != null)
+            {
+                LoadingBarFill.fillAmount = progressValue;
+            }
+            yield return null;
+        }
+
+        if (loadingScreen != null)
+        {
+            loadingScreen.SetActive(false);
+        }
     }
 }
