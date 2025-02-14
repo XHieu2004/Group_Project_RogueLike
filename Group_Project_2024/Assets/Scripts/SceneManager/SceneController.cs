@@ -34,6 +34,9 @@ public class SceneController : MonoBehaviour
         else if(scene.name == "Boss"){
             player.transform.position = new Vector3(-1.2f, -99.4f, -3.366f);
         }
+        else if(scene.name == "GameScene"){
+            player.transform.position = new Vector3(-4.08f, -43.16f, -1);
+        }
         // else if (scene.name == "GameScene") 
         // {
         // EventSystem existingEventSystem = FindObjectOfType<EventSystem>();

@@ -54,7 +54,7 @@ public class RetryMenu : MonoBehaviour
         // retryMenu.SetActive(false);
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         if (GameController.Instance != null){
-            GameController.Instance.RetryLevel(); // Use GameManager's method
+            GameController.Instance.RetryLevel(); // Use GameController's method
         }
     }
 
@@ -64,7 +64,7 @@ public class RetryMenu : MonoBehaviour
         // retryMenu.SetActive(false);
         // Debug.Log("Exit successed?");
         if (GameController.Instance != null){
-            GameController.Instance.ExitGame(); // Use GameManager's method
+            GameController.Instance.ExitGame(); // Use GameController's method
         }
     }
 }

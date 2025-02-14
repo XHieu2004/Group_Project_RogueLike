@@ -20,10 +20,13 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject loadingScreen;
     public Image LoadingBarFill;
+    public int currentScore;
+    public GameObject victoryCanvas;
 
     [Header("Audio")]
     public AudioSource gameTrack;
     public AudioSource gameOverTrack;
+    public AudioSource victoryTrack;
 
     [Header("Scene Management")]
     public string firstLevelName = "Level1";
@@ -51,29 +54,30 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if(victoryTrack != null){
+            victoryTrack.Stop();
+        }
         
-        if (gameTrack != null)
-        {
+        if (gameTrack != null){
             gameTrack.Play();
         }
 
-        if (pauseMenuCanvas != null)
-        {
+        if (pauseMenuCanvas != null){
             pauseMenuCanvas.SetActive(false);
         }
-        if (retryMenuCanvas != null)
-        {
+        if (retryMenuCanvas != null){
             retryMenuCanvas.SetActive(false);
         }
-        if(loadingScreen!= null)
-        {
+        if(loadingScreen!= null){
             loadingScreen.SetActive(false);
+        }
+        if(victoryCanvas != null){
+            victoryCanvas.SetActive(false);
         }
 
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         
         playerSpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
         // Find and assign the player if it exists in the scene.
@@ -99,12 +103,18 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(weaponController.weaponSlot2);
 
 
-        if(scene.name == "Level 2" || scene.name == "Boss"){
+        if(scene.name == "Level 2" || scene.name == "Boss" || scene.name == "GameScene"){
             player.transform.position = playerSpawnPoint.transform.position;
+            victoryCanvas.SetActive(false);
         }
         // else if(scene.name == "Boss"){
         //     playerSpawnPoint.transform.position = new Vector3(-1.2f, -99.4f, -3.366f);
         // }
+        if(scene.name == "Victory Scene"){
+            gameTrack.Stop();
+            victoryTrack.Play();
+            victoryCanvas.SetActive(true);
+        }
     }
 
     private void InitializePlayer()
@@ -156,8 +166,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void RetryLevel()
-    {
+    public void UpdateScoreUI(){
+        scoreText.text = "Score: " + currentScore;
+    }
+
+    public void RetryGame(){
+        currentScore = 0;
         if (player != null)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
@@ -186,6 +200,43 @@ public class GameController : MonoBehaviour
         if (retryMenuCanvas != null){
             retryMenuCanvas.SetActive(false);
         }
+        if(victoryCanvas != null){
+            victoryCanvas.SetActive(false);
+        }
+        StartCoroutine(LoadSceneAsync(2));
+    }
+
+    public void RetryLevel()
+    {
+        currentScore = 0;
+        if (player != null)
+        {
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.ResetHP();
+            }
+            else
+            {
+                Debug.LogError("PlayerHealth component not found on the Player GameObject!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player GameObject is null!");
+        }
+        Time.timeScale = 1;
+        // EventSystem existingEventSystem = FindObjectOfType<EventSystem>();
+        // if (existingEventSystem != null)
+        // {
+        //     Destroy(existingEventSystem.gameObject);
+        // }
+        if (pauseMenuCanvas != null){
+        pauseMenuCanvas.SetActive(false);
+        }
+        if (retryMenuCanvas != null){
+            retryMenuCanvas.SetActive(false);
+        }
         StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().buildIndex));
     }
 
@@ -196,7 +247,7 @@ public class GameController : MonoBehaviour
 
     public void LoadNextLevel(int levelName)
     {
-        StartCoroutine(LoadSceneAsync(levelName));
+        StartCoroutine(LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1));
     }
     private IEnumerator LoadSceneAsync(int sceneIndex){
          if (loadingScreen != null)

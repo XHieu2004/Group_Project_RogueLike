@@ -35852,6 +35852,7 @@ GameObject:
   - component: {fileID: 2085805803}
   - component: {fileID: 2085805802}
   - component: {fileID: 2085805801}
+  - component: {fileID: 2085805806}
   m_Layer: 0
   m_Name: Fire (3)
   m_TagString: Untagged
@@ -35900,7 +35901,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -36004,6 +36005,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085805806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085805800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a61268536581348b1dab4f93be4d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

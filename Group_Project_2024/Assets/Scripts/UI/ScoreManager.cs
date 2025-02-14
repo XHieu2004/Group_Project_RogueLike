@@ -2,22 +2,8 @@ using UnityEngine;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
-{
-    public static ScoreManager Instance; 
-    public int currentScore = 0;
+{ 
     public TextMeshProUGUI scoreText; 
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject); 
-        }
-    }
 
     void Start()
     {
@@ -26,8 +12,11 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int points)
     {
-        currentScore += points;
+        GameController.Instance.currentScore += points;
         UpdateScoreUI();
+    }
+    public void ResetScore(){
+        GameController.Instance.currentScore = 0;
     }
 
     private void UpdateScoreUI()
@@ -41,7 +30,11 @@ public class ScoreManager : MonoBehaviour
         //     Debug.LogError("Something went wrong with Score");
         // }
         if (GameController.Instance != null){
-            GameController.Instance.UpdateScore(currentScore); // Update score through GameManager
+            if (scoreText != null)
+            {
+                scoreText.text = "Score: " + GameController.Instance.currentScore;
+            }// Update score through GameManager
         }
     }
+
 }

@@ -56,7 +56,8 @@ public class EnemyHealth : MonoBehaviour
             roomManager.EnemyDefeated();
         }
 
-        ScoreManager.Instance.AddScore(2); // Assuming you have a ScoreManager.
+        GameController.Instance.currentScore += 2;
+        GameController.Instance.UpdateScoreUI();
         StartCoroutine(Disappear());
     }
 
