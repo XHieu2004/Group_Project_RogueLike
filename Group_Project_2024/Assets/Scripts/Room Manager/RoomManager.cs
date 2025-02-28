@@ -40,7 +40,6 @@ public class RoomManager : MonoBehaviour
     {
         roomLocked = true;
 
-        // Kích hoạt cửa
         foreach (GameObject door in doors)
         {
             if (door != null)

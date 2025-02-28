@@ -15,9 +15,6 @@ public class ProjectTile : MonoBehaviour
     private float lifetime;
     public int damage = 20;
 
-    // public List<string> enemyTags = new List<string>() { "Enemy", "Enemyroom2", "Boss", "Enemyroom1", "Enemyroom2", "Enemyroom3", "Enemyroom4", "Enemyroom5" };
-
-
 
     private void Start()
     {
@@ -57,17 +54,17 @@ public class ProjectTile : MonoBehaviour
             return;
         }
 
-        // if (collider2D.gameObject.layer == LayerMask.NameToLayer("Ground") || collider2D.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        // {
-        //      Explode();
-        //       return;
-        // }
+        if (collider2D.gameObject.layer == LayerMask.NameToLayer("Ground") || collider2D.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+             Explode();
+              return;
+        }
     }
 
     public void Explode()
     {
         hit = true;
-        // capCollider.enabled = false;  // Disable the collider *after* the hit.
+        // capCollider.enabled = false; 
         rb.velocity = Vector2.zero;
         anim.SetTrigger("Explode");
 

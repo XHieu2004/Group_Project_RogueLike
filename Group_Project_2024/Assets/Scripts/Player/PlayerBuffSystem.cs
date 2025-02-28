@@ -10,6 +10,9 @@ public class PlayerBuffSystem : MonoBehaviour
 
     void Start()
     {
+        playerHealth = GetComponent<PlayerHealth>();
+        playerMovement = GetComponent<PlayerMovement>();
+        projectile = GetComponent<ProjectTile>();
         if (playerHealth == null || playerMovement == null || projectile == null)
         {
             Debug.LogError("Please assign PlayerHealth, PlayerMovement, and ProjectTile references in the inspector.");

@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
     public float speed;
     Rigidbody2D bulletRB;
     public int damage;
-    public float selfDestructTime = 5f; // Thời gian tự hủy (giây)
+    public float selfDestructTime = 5f; 
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
             Debug.LogError("Target not found. Bullet will not move.");
         }
 
-        // Tự hủy sau selfDestructTime giây
+        
         Destroy(gameObject, selfDestructTime);
     }
 

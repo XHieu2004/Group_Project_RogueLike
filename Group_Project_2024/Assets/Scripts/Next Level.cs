@@ -9,7 +9,7 @@ public class NextLevel : MonoBehaviour
         //     SceneManager.LoadSceneAsync(nextScene);
         // }
         if (GameController.Instance != null && other.CompareTag("Player")){
-            GameController.Instance.LoadNextLevel(nextScene); // Use GameManager to load the next level
+            GameController.Instance.LoadNextLevel(nextScene); 
         }
         
     }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class VideoEndDetector : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public string nextSceneName = "Level1"; // Or whatever your first level is called
+    public string nextSceneName = "Level1";
 
     void Start()
     {

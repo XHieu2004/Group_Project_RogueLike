@@ -147,7 +147,6 @@ public class GameController : MonoBehaviour
         {
             pauseMenuCanvas.SetActive(false);
         }
-        // Resume audio or other game elements if needed
     }
 
     public void ShowRetryMenu()

@@ -228,7 +228,7 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 8.74
+  m_PlaybackSpeed: 4.24
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}

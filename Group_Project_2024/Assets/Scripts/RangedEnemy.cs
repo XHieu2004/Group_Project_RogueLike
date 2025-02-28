@@ -56,8 +56,8 @@ public class RangedEnemy : MonoBehaviour
     }
 
 
-    [SerializeField] private float attackCooldown = 2f; // Thời gian hồi chiêu giữa mỗi phát bắn
-    private float lastAttackTime = -Mathf.Infinity; // Thời điểm lần bắn cuối
+    [SerializeField] private float attackCooldown = 2f;
+    private float lastAttackTime = -Mathf.Infinity;
 
     private void Update()
     {

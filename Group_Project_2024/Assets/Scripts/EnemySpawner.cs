@@ -5,7 +5,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public GameObject enemySpawnPoint; // Thêm tham chiếu tới object Enemy Spawn
+    public GameObject enemySpawnPoint; 
     public float spawnInterval = 5f;
     public int maxEnemies = 100;
     private int currentEnemyCount = 0;

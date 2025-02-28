@@ -881,6 +881,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2991948463341399406, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
   m_PrefabInstance: {fileID: 357887239832086279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &235457365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235457355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8bc482213a5ec41bc454f4d6ad1590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  playerMovement: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!1 &265804236
 GameObject:
   m_ObjectHideFlags: 0
@@ -27193,7 +27208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8131717846729291975, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
       propertyPath: speed
-      value: 51.2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8782332852506049950, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
       propertyPath: healthBar
@@ -27206,7 +27221,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8112322377100668931, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 235457365}
   m_SourcePrefab: {fileID: 100100000, guid: 11d5cefc9192752469195b7ee669bdae, type: 3}
 --- !u!1001 &2242414952521035327
 PrefabInstance:
